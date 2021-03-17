@@ -11,7 +11,7 @@ pipeline {
 			
 			post {
 				success {
-					junit '**/target/surefire-reports/TEST-*.xml'
+					junit '**build/test-results/*/.xml'
 					archiveArtifacts 'target/*.jar'
 				}
 			}
