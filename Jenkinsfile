@@ -7,7 +7,13 @@ pipeline {
 		stage('Build') {
 		
 			steps {
-				sh "./gradlew build"
+				sh "./gradlew clean build"
+			}
+			
+			post {
+				success {
+					archiveArtifacts '**/build/**/*.jar', fingerprint: true
+				}
 			}
 		}
 		
@@ -20,7 +26,6 @@ pipeline {
 			post {
 				success {
 					junit '**/build/test-results/test/*.xml'
-					archiveArtifacts 'target/*.jar'
 				}
 			}
 		}
