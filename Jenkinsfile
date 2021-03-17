@@ -1,12 +1,15 @@
 pipeline {
 
 	agent any
+	node {
+    	checkout scm 
+    }
 	
 	stages {
 		stage('Build') {
 		
 			steps {
-				sh "gradlew build"
+				sh "./gradlew build"
 			}
 			
 			post {
