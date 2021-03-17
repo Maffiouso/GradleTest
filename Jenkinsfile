@@ -33,7 +33,7 @@ pipeline {
 		stage('Sonarqube') {
             steps {
 
-               sh './gradlew sonarqube -Dsonar.projectKey=testGradle -Dsonar.login=admin -Dsonar.password=password -Dsonar.junit.reportPaths=./build/test-results/test -Dsonar.binaries=./build/classes'
+               sh './gradlew sonarqube  -Dsonar.host.url=http://localhost:9595/ -Dsonar.projectKey=testGradle -Dsonar.login=admin -Dsonar.password=password -Dsonar.junit.reportPaths=./build/test-results/test -Dsonar.binaries=./build/classes'
             }
         }
 	}
