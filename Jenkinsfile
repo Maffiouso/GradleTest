@@ -29,5 +29,13 @@ pipeline {
 				}
 			}
 		}
+		
+		stage('Sonarqube') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh './gradlew sonarqube -Dsonar.projectKey=testGradle -Dsonar.login=admin -Dsonar.password=password -Dsonar.junit.reportPaths=./build/test-results/test -Dsonar.binaries=./build/classes'
+                }
+            }
+        }
 	}
 }

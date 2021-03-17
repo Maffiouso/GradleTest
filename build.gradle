@@ -11,6 +11,7 @@ plugins {
     id 'java'
     id 'application'
     id 'java-library'
+    id "org.sonarqube" version "3.1.1"
 }
 
 repositories {
@@ -28,6 +29,12 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+}
+
+sonarqube {
+    properties {
+        property "sonar.exclusions", "*/Generated.java"
+    }
 }
 
 mainClassName = 'testgradle.Library'
